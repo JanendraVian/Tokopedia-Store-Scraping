@@ -1,7 +1,7 @@
 # Tokopedia Scraping: Tenue de Attire - Part 2
 #### by JanendraVian
 #### September 26, 2023
-This is the continuation of Part 1 of Tokopedia Scraping: Tenue de Attire.
+This is the continuation of [Part 1 of Tokopedia Scraping: Tenue de Attire](https://github.com/JanendraVian/Tokopedia-Store-Scraping/blob/main/README_Part%201.md#tokopedia-scraping-tenue-de-attire---part-1).
 
 ### Data Cleaning & Transformation
 #### Python
