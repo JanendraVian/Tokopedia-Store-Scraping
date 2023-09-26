@@ -107,36 +107,6 @@ print(df)
 df.to_csv('Tenue_1.csv')
 ```
 
-Now here's how my lack of knowledge limits my efficiency. Because I didn't know how to loop and automate data retrieval on different pages, I had to do that 19 times by changing the page indicator in the URL. Honestly, it wasn't that bad but if I had the chance to learn it, I would.
+Now here's how my lack of knowledge limited my efficiency. Because I didn't know how to loop and automate data retrieval on different pages, I had to do that 19 times by changing the page indicator in the URL. Honestly, it wasn't that bad but if I had the chance to learn it, I would.
 
-### Data Cleaning & Transformation
-#### Python
-In order to do some data cleaning, I need to merge the 19 CSV files into one. The merged files are then exported as a CSV file. Here's how it's done:
-```python
-import os
-import pandas as pd
-from collections import Counter
-
-master_df = pd.DataFrame()
-for file in os.listdir(os.getcwd()):
-    if file.endswith('.csv'):
-        master_df = master_df.append(pd.read_csv(file))
-        
-master_df.to_csv('TenueAll.csv', index=False)
-```
-
-The merged file was then observed and looked for errors and other parts that might need some tweaking. I needed separate columns on the dominant colors of the products, the product types, and the product availability status. Other than that, I needed to do some basic data cleaning like trimming and reformating the prices to numbers, discounts to percentages, and items sold as numbers. 
-
-The first step I did was to determine the dominant color of each product. From observation, some products only have 1 color, some have 2 colors, and some have no information on color. Products with 2 colors use their first mentioned color as the dominant color (e.g. "Blue White" means its dominant color is Blue). Products that don't mention their colors are always printed-art garments, so to determine their colors is unwise. I left it blank. So, I wrote a code that can fetch me the most occurring words in the ```ProductName``` column.
-```python
-n = 100
-DataFrame['ProductName'].value_counts()[:n].index.tolist()
-```
-I manually sorted through the list and wrote down all the colors. There are 34 distinct colors. In order to automatically determine each product's dominant colors, I ran a code so that the first one to appear in the string would be the dominant color. Then I populate them into a new column.
-```python
-df['DominantColor'] = df['ProductName'].str.extract('(Navy|White|Black|Grey|Blue|Brown|Green|Olive|Red|Cream|Mustard|Maroon|Khaki|Yellow|Orange|Sage|Terracotta|Charcoal|Mocca|Sand|Turquoise|Salmon|Mint|Burgundy|Tosca|Bronze|Nude|Caramel|Indigo|Brick|Gold|OIive|Turqoise|Army)')
-df.to_csv('TenueCompleted.csv')
-```
-With these, I'm done with Python for this project.
-
-The next part will report on data cleaning and transformation process in Excel and the analysis and visualizations.
+[The next part](https://github.com/JanendraVian/Tokopedia-Store-Scraping/blob/main/README_Part%202.md#tokopedia-scraping-tenue-de-attire---part-2) will focus on the data cleaning and transformation process in Excel and the analysis and visualizations.
