@@ -5,7 +5,7 @@
 ## A. Background (Introduction)
 The initial intent to start this project was motivated by my motivation to learn more about Python, especially data analysis in Python, and web scraping. This is (I think) an Exploratory Data Analysis project. Throughout the process of finishing this project, I made some mistakes and had questions regarding the chosen data and method, which I will get to more details later.
 
-The data are scraped from Tokopedia, specifically the store Tenue de Attire. They are a fashion/garment industry based and made in Indonesia focusing on menswear and effortless styling in daily usage. I've chosen this brand because, honestly, they're cool. There is no urgency or importance regarding the choosing  of the brand. Even so, based on observations on other brands/stores, Tenue de Attire's product names are the most well-written in terms of the "neatness" of the item names, their types/categories, and colors. This came in handy when cleaning the data.
+The data are scraped from Tokopedia, specifically the store Tenue de Attire. They are a fashion/garment industry based and made in Indonesia focusing on menswear and effortless styling in daily usage. I've chosen this brand because, honestly, they're cool. There is no urgency or importance regarding the choosing  of the brand. Even so, based on observations on other brands/stores, Tenue de Attire's product names are the most well-written regarding the "neatness" of the item names, their types/categories, and colors. This came in handy when cleaning the data.
 |<img src="https://github.com/JanendraVian/Tokopedia-Store-Scraping/assets/141770727/d0ab0b60-1dc0-4840-b56e-c290fcb7446e" height="150">|
 |:--:| 
 | *Image 1* |
@@ -16,10 +16,10 @@ The data are scraped from Tokopedia, specifically the store Tenue de Attire. The
 
 ## Preparation
 ### *HUGE DISCLAIMER* 
-The data is retrieved from web scraping the Tokopedia site. As such, there are some limitations. The data was scraped on September 25, 2023. The amount of discount the items have and the availability of the items are bound to this date. However, the number of sales is the total of sales since the products came out. This matters because the high number of sales of an item might be affected by the amount of discount on the previous dates. That being said, I fully acknowledge the reliability of the data and proceeded with my analysis.
+The data is retrieved from web scraping the Tokopedia site. As such, there are some limitations. The data was scraped on September 25, 2023. The amount of discount the items have and the availability of the items are bound to this date. However, the number of sales is the total of sales since the products came out. This matters because the high number of sales of an item might be affected by the amount of discount on the previous dates. So, because the price is subject to fluctuations, the number of sales is not really accurate. That being said, I fully acknowledge the reliability of the data and proceeded with my analysis.
 ### About the data
 - The data is publicly available through Tokopedia.
-- There are a total of 1212 unique items/products in their Tokopedia catalog.
+- There are 1212 unique products in their Tokopedia catalog.
 - The number of sales above the count of 30 is grouped into brackets with increments of 10 (e.g. 30+, 40+, 50+, ....., 100+, 250+).
 
 ## Process
@@ -132,9 +132,11 @@ The first step I did was to determine the dominant color of each product. From o
 n = 100
 DataFrame['ProductName'].value_counts()[:n].index.tolist()
 ```
-I manually sorted through the list and wrote down all the colors. There are 34 distinct colors. In order to automatically determine each product's dominant colors, I ran a code so that the first one to appear in the string would be the dominant color. Then I populate them to a new column.
+I manually sorted through the list and wrote down all the colors. There are 34 distinct colors. In order to automatically determine each product's dominant colors, I ran a code so that the first one to appear in the string would be the dominant color. Then I populate them into a new column.
 ```python
 df['DominantColor'] = df['ProductName'].str.extract('(Navy|White|Black|Grey|Blue|Brown|Green|Olive|Red|Cream|Mustard|Maroon|Khaki|Yellow|Orange|Sage|Terracotta|Charcoal|Mocca|Sand|Turquoise|Salmon|Mint|Burgundy|Tosca|Bronze|Nude|Caramel|Indigo|Brick|Gold|OIive|Turqoise|Army)')
 df.to_csv('TenueCompleted.csv')
 ```
 With these, I'm done with Python for this project.
+
+The next part will report on data cleaning and transformation process in Excel and the analysis and visualizations.
